@@ -12,13 +12,13 @@ func TestInfo(t *testing.T) {
 
 	var failReturn = NewFailReturn(errors.New("failed return"))
 	if failReturn.Code != 60000 {
-		t.Errorf("expected succ return code %v", 60000)
+		t.Errorf("expected fail return code %v", 60000)
 		t.Errorf("                      got %v", failReturn.Code)
 	}
 
 	failReturn = NewFailReturn("failed return")
 	if failReturn.Code != 60000 {
-		t.Errorf("expected succ return code %v", 60000)
+		t.Errorf("expected fail return code %v", 60000)
 		t.Errorf("                      got %v", failReturn.Code)
 	}
 }
