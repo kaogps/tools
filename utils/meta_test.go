@@ -12,6 +12,30 @@ func TestTrimPathName(t *testing.T) {
 		t.Errorf("expected %v", "/seg1/seg2")
 		t.Errorf("     got %v", res)
 	}
+
+	res = TrimPathName("")
+	if res != "" {
+		t.Errorf("trim url %v", "")
+		t.Errorf("expected %v", "")
+		t.Errorf("     got %v", res)
+	}
+}
+
+func TestTrimSpace(t *testing.T) {
+	var testStr = "  	data  		  "
+	var res = TrimSpace(testStr)
+	if res != "data" {
+		t.Errorf("trim space %v", testStr)
+		t.Errorf("expected %v", "data")
+		t.Errorf("     got %v", res)
+	}
+
+	res = TrimSpace("")
+	if res != "" {
+		t.Errorf("trim space %v", "")
+		t.Errorf("  expected %v", "")
+		t.Errorf("       got %v", res)
+	}
 }
 
 func TestRandStringBytesMaskImprSrc(t *testing.T) {

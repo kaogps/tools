@@ -31,4 +31,10 @@ func TestInfo(t *testing.T) {
 		t.Errorf("expected fail return code %v", 60000)
 		t.Errorf("                      got %v", failReturn.Code)
 	}
+
+	failReturn = NewFailReturn(11)
+	if failReturn.Code != 60001 {
+		t.Errorf("expected fail return code %v", 60001)
+		t.Errorf("                      got %v", failReturn.Code)
+	}
 }

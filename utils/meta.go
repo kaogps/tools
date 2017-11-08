@@ -15,6 +15,15 @@ func TrimPathName(s string) string {
 	return reg.ReplaceAllString(s, "/")
 }
 
+// TrimSpace 去除字符串首尾的空格符 \t \n 等
+func TrimSpace(s string) string {
+	if len(s) == 0 {
+		return ""
+	}
+	var reg = regexp.MustCompile(`(^\s+)|(\s+$)`)
+	return reg.ReplaceAllString(s, "")
+}
+
 const letterBytes = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
 const (
 	letterIdxBits = 6                    // 6 bits to represent a letter index
