@@ -1,18 +1,13 @@
 language: go
-
 go:
-  - 1.7.x
-  - 1.8.x
-  - master
-
-  before_install:
-    - go get golang.org/x/tools/cmd/cover
-    - go get github.com/mattn/goveralls
-
-  script:
-    - sh coverage.sh
-
-  secure: "e0bkcMKPKL5/ud0Ru/7KdmykenktNJ/wXNX6lJGfAAQllWO1+RyakWUIjq7Rb0+7oTUt8Vy6rjqWt39G4eJ5svF8y4DN565QRFfwTAXzSYyI8Rhz6HmDPm7DcQYfwDQRWXWo3d7vymNXv1OK3S2r+Hz68yBNyJ5ZPXzpuY15zQT/V1X1euOUdsM1Bw5ZlsZb
-C37cbu4RlyH79uIw8Z2ElkpdYC/MIqd1qAQVTflenF+fbnIqTV440M5mWmVx4f1HHyBcLylw6tfvXnQo2b30wNpLfcE7iy2t+KdWfrN/5Ng4LaRBhv/wLRch3S2V/bb5SM4nHiPxIKsh+llSmHRKmDvc3Au0SZsqeibZmk4ZUiytRj03wl636NIzzOef0zsckbC1sW6/tcY
-Z+PQPedFi2E0SCf/h29hXRGcVNdAPI6z+gG/7W6UdgkksFZZT7gHt0Ef6qmcpxohMSDoxgFx6faukuQDfvbnRTXxM5lIcHezhnYqmTMD+TKiFBIPnDgD0LlxAt4Nqf+C6onktLP3AtBLKo+slFABdquFAUKVCtwALJu+qJowjix2byDWsY8v2FApjFjKoBQApqjmXVjjpQn
-cqs5zXEyyrkopJWZjqR/oZZcSdXZIb/eDL/bTmbR1yi4rYsOc59DqnRLKntszf/z/9sI0YOex7zOMrbhQvo4A="
+- 1.7.x
+- 1.8.x
+- master
+before_install:
+- go get golang.org/x/tools/cmd/cover
+- go get github.com/mattn/goveralls
+script:
+- sh coverage.sh
+env:
+  global:
+    secure: gg2CvudfbjwwJChvEn6Jna88NaV/faNzi+y++PkqVVkeSREI5q3O3w7U7Y8SsnccBQcSI7syYnk/C2a49zTemU8B7S/x9hlstMUnRXCNjN2LqWmmUmH0LpsHhwFCU7BUhW5W3bn4oYdM9iMPml+7VRdbUO+mj0oNk0edyKLBA6dO8fvSEPCrw2L5ErXUelN5ZrPiY1+Z3T8y2ZCpUeU5OagaeonD1inqD0mRNRjADRgv3wh5m9O9RXQGohvKI/U8Tagqir8TLVfQlRDWolitDlI3GO2+SbrmaoYBk6w2kWXPhFRHYNILk/SKtuj0Yfm4whgk1V2Cdv+RlbA0zsexghVjJ7OfV9Egj+mmZstmqzz5+L9lcwtItcC4NfziuPyhKsOFoZBWH8q0nitgP+UXlMqxMx723zSDDkrjbnbbN0S6wRGPRY7lMVLlovG4DiDdF3+u1UOvYv0lXupNS3lQEU2VlXwQHM8yXxEAH6iXmd7heqVwj7Qkr0UceslStjUO+SGy8OJxHBa4hfrcdQHroUbAQ41u7ja9QhrlMS6usxzyRPgBSDqTG8ZF10wxZkvGSv6KKhZusvIbL+r7Wsf4dB46diV/JrxsSvQRSsuq/N+J1e+UN5H6+qDIv20/5rO5qUQriPxpAze4KI15/PcxDimIiWz+XOdYNsQFllWOeZE=
