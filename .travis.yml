@@ -1,0 +1,18 @@
+language: go
+
+go:
+  - 1.7.x
+  - 1.8.x
+  - master
+
+  before_install:
+    - go get golang.org/x/tools/cmd/cover
+    - go get github.com/mattn/goveralls
+
+  script:
+    - sh coverage.sh
+
+  secure: "e0bkcMKPKL5/ud0Ru/7KdmykenktNJ/wXNX6lJGfAAQllWO1+RyakWUIjq7Rb0+7oTUt8Vy6rjqWt39G4eJ5svF8y4DN565QRFfwTAXzSYyI8Rhz6HmDPm7DcQYfwDQRWXWo3d7vymNXv1OK3S2r+Hz68yBNyJ5ZPXzpuY15zQT/V1X1euOUdsM1Bw5ZlsZb
+C37cbu4RlyH79uIw8Z2ElkpdYC/MIqd1qAQVTflenF+fbnIqTV440M5mWmVx4f1HHyBcLylw6tfvXnQo2b30wNpLfcE7iy2t+KdWfrN/5Ng4LaRBhv/wLRch3S2V/bb5SM4nHiPxIKsh+llSmHRKmDvc3Au0SZsqeibZmk4ZUiytRj03wl636NIzzOef0zsckbC1sW6/tcY
+Z+PQPedFi2E0SCf/h29hXRGcVNdAPI6z+gG/7W6UdgkksFZZT7gHt0Ef6qmcpxohMSDoxgFx6faukuQDfvbnRTXxM5lIcHezhnYqmTMD+TKiFBIPnDgD0LlxAt4Nqf+C6onktLP3AtBLKo+slFABdquFAUKVCtwALJu+qJowjix2byDWsY8v2FApjFjKoBQApqjmXVjjpQn
+cqs5zXEyyrkopJWZjqR/oZZcSdXZIb/eDL/bTmbR1yi4rYsOc59DqnRLKntszf/z/9sI0YOex7zOMrbhQvo4A="
