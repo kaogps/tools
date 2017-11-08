@@ -1,7 +1,11 @@
 package utils
 
-import "testing"
-import "errors"
+import (
+	"errors"
+	"testing"
+
+	"github.com/kdada/tinygo/util"
+)
 
 func TestInfo(t *testing.T) {
 	var succReturn = NewSuccessReturn("succ")
@@ -17,6 +21,12 @@ func TestInfo(t *testing.T) {
 	}
 
 	failReturn = NewFailReturn("failed return")
+	if failReturn.Code != 60000 {
+		t.Errorf("expected fail return code %v", 60000)
+		t.Errorf("                      got %v", failReturn.Code)
+	}
+
+	failReturn = NewFailReturn(util.ErrorMacAddrNotFound)
 	if failReturn.Code != 60000 {
 		t.Errorf("expected fail return code %v", 60000)
 		t.Errorf("                      got %v", failReturn.Code)

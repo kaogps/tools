@@ -1,5 +1,7 @@
 package utils
 
+import "github.com/kdada/tinygo/util"
+
 // SuccessReturn 请求成功返回值
 type SuccessReturn struct {
 	Code int
@@ -46,6 +48,11 @@ func NewFailReturn(data interface{}) *FailReturn {
 	err, ok := data.(error)
 	if ok {
 		return &FailReturn{60000, err.Error()}
+	}
+	// 兼容tinygo.util.Error
+	err2, ok := data.(util.Error)
+	if ok {
+		return &FailReturn{60000, err2.String()}
 	}
 	return &FailReturn{60001, "未知错误"}
 }
