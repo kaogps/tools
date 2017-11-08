@@ -51,3 +51,21 @@ func TestRandStringBytesMaskImprSrc(t *testing.T) {
 		t.Errorf("unexpected token %v", token)
 	}
 }
+
+func TestResolveStructToValues(t *testing.T) {
+	var m FailReturn
+	m.Code = 20000
+	m.Message = "test ResolveStructToValues"
+	var values = ResolveStructToValues(m)
+	var code = values.Get("Code")
+	if code != "20000" {
+		t.Errorf("expected Code value %v", 20000)
+		t.Errorf("                got %v", code)
+	}
+
+	var msg = values.Get("Message")
+	if msg != "test ResolveStructToValues" {
+		t.Errorf("expected Code value %v", "test ResolveStructToValues")
+		t.Errorf("                got %v", msg)
+	}
+}
