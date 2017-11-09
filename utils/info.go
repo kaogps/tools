@@ -26,6 +26,8 @@ var (
 	FailReturnCode20001 = &FailReturn{20001, "用户未登录，请先登录！"}
 	// FailReturnCode20002 用户权限不足
 	FailReturnCode20002 = &FailReturn{20002, "操作失败，用户权限不足！"}
+	// FailReturnCode20003 在学习中心中,用户只有在未设置区域的情况下(省市均为0)才能设置区域
+	FailReturnCode20003 = &FailReturn{20003, "用户设置区域失败(用户不能重复设置区域)"}
 
 	// 50000开头的错误，服务器错误
 
