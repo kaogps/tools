@@ -22,6 +22,8 @@ var (
 
 	// 20000开头的错误，用户权限错误
 
+	// FailReturnCode20000 登陆失败，用户名或密码错误
+	FailReturnCode20000 = &FailReturn{20000, "用户名或密码错误"}
 	// FailReturnCode20001 用户未登录
 	FailReturnCode20001 = &FailReturn{20001, "用户未登录，请先登录！"}
 	// FailReturnCode20002 用户权限不足
