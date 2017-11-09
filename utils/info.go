@@ -26,6 +26,8 @@ var (
 	FailReturnCode20001 = &FailReturn{20001, "用户未登录，请先登录！"}
 	// FailReturnCode20002 用户权限不足
 	FailReturnCode20002 = &FailReturn{20002, "操作失败，用户权限不足！"}
+	// FailReturnCode20003 请求失败
+	FailReturnCode20003 = &FailReturn{20003, "操作失败！"}
 
 	// 50000开头的错误，服务器错误
 
