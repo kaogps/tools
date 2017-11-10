@@ -71,6 +71,19 @@ func ResolveHTTPRespToInterface(input *http.Response, output interface{}) error 
 	return err
 }
 
+// ResolveHTTPRespToMap 解析http response到map
+func ResolveHTTPRespToMap(input *http.Response, output map[string]interface{}) error {
+	if input == nil {
+		return errors.New("http response not found")
+	}
+	var body, err = ioutil.ReadAll(input.Body)
+	if err != nil {
+		return err
+	}
+	err = json.Unmarshal(body, &output)
+	return err
+}
+
 // ResolveStructToValues 解析结构体数据到url.Values中
 // 如果data不是结构体，则返回nil
 func ResolveStructToValues(data interface{}) *url.Values {
