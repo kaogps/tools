@@ -72,6 +72,20 @@ func ResolveHTTPRespToInterface(input *http.Response, output interface{}) error 
 	return err
 }
 
+// InterfaceToStruct 将interface{}类型转换成具体的struct
+func InterfaceToStruct(input interface{}, ouput interface{}) error {
+	var b, err = json.Marshal(input)
+	if err != nil {
+		Logger.Debug(err)
+		return err
+	}
+	err = json.Unmarshal(b, ouput)
+	if err != nil {
+		Logger.Debug(err)
+	}
+	return err
+}
+
 // MapToStruct 将map值解析到struct中去
 func MapToStruct(m map[string]interface{}, result interface{}) error {
 	for k, v := range m {
