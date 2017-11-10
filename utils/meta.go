@@ -72,6 +72,39 @@ func ResolveHTTPRespToInterface(input *http.Response, output interface{}) error 
 	return err
 }
 
+// MapToStruct 将map值解析到struct中去
+func MapToStruct(m map[string]interface{}, result interface{}) error {
+	for k, v := range m {
+		var err = SetField(result, k, v)
+		if err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+func SetField(obj interface{}, name string, value interface{}) error {
+	structValue := reflect.ValueOf(obj).Elem()
+	structFieldValue := structValue.FieldByName(name)
+
+	if !structFieldValue.IsValid() {
+		return fmt.Errorf("No such field: %s in obj", name)
+	}
+
+	if !structFieldValue.CanSet() {
+		return fmt.Errorf("Cannot set %s field value", name)
+	}
+
+	structFieldType := structFieldValue.Type()
+	val := reflect.ValueOf(value)
+	if structFieldType != val.Type() {
+		return errors.New("Provided value type didn't match obj field type")
+	}
+
+	structFieldValue.Set(val)
+	return nil
+}
+
 // ResolveStructToValues 解析结构体数据到url.Values中
 // 如果data不是结构体，则返回nil
 func ResolveStructToValues(data interface{}) *url.Values {
