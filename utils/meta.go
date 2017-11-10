@@ -59,6 +59,7 @@ func RandStringBytesMaskImprSrc(n int) string {
 }
 
 // ResolveHTTPRespToInterface 解析http response到结构体
+// output必须是结构体指针或map指针
 func ResolveHTTPRespToInterface(input *http.Response, output interface{}) error {
 	if input == nil {
 		return errors.New("http response not found")
@@ -67,20 +68,7 @@ func ResolveHTTPRespToInterface(input *http.Response, output interface{}) error 
 	if err != nil {
 		return err
 	}
-	err = json.Unmarshal(body, &output)
-	return err
-}
-
-// ResolveHTTPRespToMap 解析http response到map
-func ResolveHTTPRespToMap(input *http.Response, output map[string]interface{}) error {
-	if input == nil {
-		return errors.New("http response not found")
-	}
-	var body, err = ioutil.ReadAll(input.Body)
-	if err != nil {
-		return err
-	}
-	err = json.Unmarshal(body, &output)
+	err = json.Unmarshal(body, output)
 	return err
 }
 
