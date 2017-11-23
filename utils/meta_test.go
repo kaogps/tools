@@ -3,6 +3,7 @@ package utils
 import "testing"
 import "regexp"
 import "strconv"
+import "encoding/json"
 
 func TestTrimPathName(t *testing.T) {
 	var testURL = "//seg1////seg2"
@@ -67,5 +68,46 @@ func TestResolveStructToValues(t *testing.T) {
 	if msg != "test ResolveStructToValues" {
 		t.Errorf("expected Code value %v", "test ResolveStructToValues")
 		t.Errorf("                got %v", msg)
+	}
+}
+
+func TestInterfaceToStruct(t *testing.T) {
+	var testJson = `{"Code":0,"Message":"succ"}`
+	var m FailReturn
+	var iData interface{}
+	var err = json.Unmarshal([]byte(testJson), &iData)
+	if err != nil {
+		t.Error(err)
+	}
+	err = InterfaceToStruct(&iData, &m)
+	if err != nil {
+		t.Error(err)
+	}
+	if m.Code != 0 {
+		t.Errorf("expected code %v", 0)
+		t.Errorf("		    got %v", m.Code)
+	}
+	if m.Message != "succ" {
+		t.Errorf("expected message %v", "succ")
+		t.Errorf("		       got %v", m.Message)
+	}
+}
+
+func TestMapToStruct(t *testing.T) {
+	var mapData = make(map[string]interface{}, 0)
+	var m FailReturn
+	mapData["Code"] = 0
+	mapData["Message"] = "succ"
+	var err = MapToStruct(mapData, &m)
+	if err != nil {
+		t.Error(err)
+	}
+	if m.Code != 0 {
+		t.Errorf("expected code %v", 0)
+		t.Errorf("		    got %v", m.Code)
+	}
+	if m.Message != "succ" {
+		t.Errorf("expected message %v", "succ")
+		t.Errorf("		       got %v", m.Message)
 	}
 }
